@@ -23,13 +23,15 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version: "1.23"
+
       - run: |
           GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} \
           go build -o ../archmaint-${{ matrix.goos }}-${{ matrix.goarch }}
+
       - uses: actions/upload-artifact@v4
         with:
-          name: archmaint
-          path: archmaint-*
+          name: archmaint-${{ matrix.goos }}-${{ matrix.goarch }}
+          path: ../archmaint-${{ matrix.goos }}-${{ matrix.goarch }}
 
   release:
     needs: build
@@ -37,9 +39,10 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: archmaint
+          path: ./artifacts
+
       - uses: softprops/action-gh-release@v2
         with:
-          files: archmaint-*
+          files: artifacts/**/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
