@@ -288,7 +288,9 @@ sudo sensors-detect
 ## Roadmap
 
 **Current**: v1.1.0 - Stable with enhanced safety
+
 **Next**: v1.2.0 - AUR support (maybe), notifications
+
 **Future**: v2.0.0 - cooking
 
 ---
