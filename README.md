@@ -43,7 +43,7 @@ ArchMaint simplifies routine Arch Linux system maintenance by consolidating esse
 ```bash
 # Clone repository
 git clone https://github.com/DaEpicR/ArchMaint.git
-cd ArchMaint
+cd ArchMaint/cli/
 
 # Install dependencies
 go mod download
@@ -51,6 +51,9 @@ go mod tidy
 
 # Build
 go build -o archmaint arch-maintenance-tool.go
+
+# Run
+./archmaint
 
 # Install system-wide (optional)
 sudo cp archmaint /usr/local/bin/
